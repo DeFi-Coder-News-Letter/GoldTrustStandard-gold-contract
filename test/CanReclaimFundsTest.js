@@ -10,8 +10,8 @@ contract('CanReclaimFunds', function ([_, admin, owner, assetProtectionRole, any
 
   beforeEach(async function () {
     // Create contract and token
-    const paxg = await GTSGMock.new({from: owner});
-    const proxy = await Proxy.new(paxg.address, {from: admin});
+    const gtsg = await GTSGMock.new({from: owner});
+    const proxy = await Proxy.new(gtsg.address, {from: admin});
     const proxiedGTSG = await GTSGMock.at(proxy.address);
     await proxiedGTSG.initialize({from: owner});
     await proxiedGTSG.initializeBalance(owner, amount);
