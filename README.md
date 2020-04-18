@@ -1,24 +1,25 @@
-# Paxos Gold (PAXG)
-Paxos-issued phyiscal gold ERC20 token public smart contract repository.
+# Gold Trust Standard Gold (GTSG)
+A Trust with validations-issued phyiscal gold ERC20 token public smart contract repository.
 
-https://www.paxos.com/pax-gold-whitepaper
 
 ## ABI, Address, and Verification
 
-The contract abi is in `PAXG.abi`. It is the abi of the implementation contract.
-Interaction with PAXG is done at the address of the proxy at `0x45804880De22913dAFE09f4980848ECE6EcbAf78`. See
+The contract abi is in `GTSG.abi`. It is the abi of the implementation contract.
+Interaction with GTSG is done at the address of the proxy at `<public address TBD>`. See
 https://etherscan.io/token/0x45804880De22913dAFE09f4980848ECE6EcbAf78 for live on-chain details, and the section on bytecode verification below.
-See also our independent security audits by [ChainSecurity](audit-reports/paxg-audits/ChainSecurity_PAXOS-GOLD.pdf) and a formal verification audit by [CertiK](audit-reports/paxg-audits/CertiK_Verification_Report_for_Paxos.pdf). Since Pax Gold is based on Paxos Standard, also see other independent security audits of Paxos Standard by [Nomic Labs](https://medium.com/nomic-labs-blog/paxos-standard-pax-audit-report-ca743c9575dc), [ChainSecurity](https://medium.com/chainsecurity/paxos-standard-audit-completed-2e9a0064e8bb),
+See also our independent security audits by [ChainSecurity](audit-reports/gtsg-audits/<our PDF link>) and a formal verification audit by [CertiK](audit-reports/gtsg-audits/CertiK_Verification_Report_for_<our trust name TBD>.pdf). 
+
+Since GTS Gold is based on Paxos Standard, also see other independent security audits of Paxos Standard by [Nomic Labs](https://medium.com/nomic-labs-blog/paxos-standard-pax-audit-report-ca743c9575dc), [ChainSecurity](https://medium.com/chainsecurity/paxos-standard-audit-completed-2e9a0064e8bb),
 and [Trail of Bits](https://github.com/trailofbits/publications/blob/master/reviews/paxos.pdf).
 
 ## Contract Specification
 
-Paxos Gold (PAXG) is an ERC20 token that is Centrally Minted and Burned by Paxos,
-representing the physical ownership of LBMA accredited Gold Bars.
+Gold Trust Standard Gold (GTSG) is an ERC20 token that is Centrally Minted and Burned by <FCC/trust we name TBD>,
+representing the physical ownership of <whatever standard, such as LBMA Gold Bars>.
 
 ### ERC20 Token
 
-The public interface of PAXG Gold is the ERC20 interface
+The public interface of GTSG Gold is the ERC20 interface
 specified by [EIP-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md).
 
 - `name()`
@@ -58,7 +59,8 @@ transaction mined onto the blockchain more quickly.
 
 ### Controlling the token supply
 
-The total supply of PAXG is backed by gold held in professional vaults in London, under the custody of Paxos.
+The total supply of GTSG is backed by gold held in professional vaults in <Final Location of Vaulting TBD based on partnerships>, under the custody of <FCC/Trust name TBD later>.
+
 There is a single `supplyController` address that can mint and burn the token
 based on the actual movement of gold in and out of the reserve based on
 requests for the purchase, conversion and redemption of PAXG.
@@ -85,9 +87,10 @@ The simple model for pausing transfers following OpenZeppelin's
 
 ### Fees
 
-Paxos charges a set fee rate for all on-chain transfers of PAXG in order to offset storage fees of gold bars in our vault.
+<FCC/Trust TBD name> charges a set fee rate for all on-chain transfers of GTSG in order to offset storage fees of gold bars in our vault.
+
 The fee controller has the ability to set the fee recipient and the fee rate (measured in 1/100th of a basis point).
-Paxos will never change the fee rate without prior notice as we take transparency very seriously.
+Gold Trust Standard will never change the fee rate without prior notice as we take transparency very seriously.
 
 ### Asset Protection Role
 
