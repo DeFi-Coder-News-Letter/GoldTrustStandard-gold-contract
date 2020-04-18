@@ -1,21 +1,21 @@
-const PAXGMock = artifacts.require('PAXGWithBalance.sol');
+const GTSGMock = artifacts.require('GTSGWithBalance.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 const ethSigUtil = require('eth-sig-util');
 
-// Tests that PAXG fee controller capabilities function correctly.
-contract('Fee Controller PAXG', function ([_, admin, feeController, feeRecipient, recipient, otherAddress, owner]) {
+// Tests that GTSG fee controller capabilities function correctly.
+contract('Fee Controller GTSG', function ([_, admin, feeController, feeRecipient, recipient, otherAddress, owner]) {
     const ownerStartingBalance = 100000000000000;
 
     beforeEach(async function () {
-        const paxg = await PAXGMock.new({from: owner});
+        const paxg = await GTSGMock.new({from: owner});
         const proxy = await Proxy.new(paxg.address, {from: admin});
-        const proxiedPAXG = await PAXGMock.at(proxy.address);
-        await proxiedPAXG.initialize({from: owner});
+        const proxiedGTSG = await GTSGMock.at(proxy.address);
+        await proxiedGTSG.initialize({from: owner});
         // initialize with 1,000,000
-        await proxiedPAXG.initializeBalance(owner, ownerStartingBalance);
-        this.token = proxiedPAXG;
+        await proxiedGTSG.initializeBalance(owner, ownerStartingBalance);
+        this.token = proxiedGTSG;
     });
 
     describe('when the contract is first deployed', function () {
