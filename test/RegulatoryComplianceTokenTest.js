@@ -1,19 +1,19 @@
-const PAXG = artifacts.require('PAXGImplementation.sol');
+const GTSG = artifacts.require('GTSGImplementation.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 
-// Tests that PAXG Asset Protection capabilities function correctly.
-contract('PAXG', function ([_, admin, assetProtectionRole, otherAddress, freezableAddress, owner]) {
+// Tests that GTSG Asset Protection capabilities function correctly.
+contract('GTSG', function ([_, admin, assetProtectionRole, otherAddress, freezableAddress, owner]) {
 
   beforeEach(async function () {
-    const paxg = await PAXG.new({from: owner});
+    const paxg = await GTSG.new({from: owner});
     const proxy = await Proxy.new(paxg.address, {from: admin});
-    const proxiedPAXG = await PAXG.at(proxy.address);
-    await proxiedPAXG.initialize({from: owner});
-    this.token = proxiedPAXG;
+    const proxiedGTSG = await GTSG.at(proxy.address);
+    await proxiedGTSG.initialize({from: owner});
+    this.token = proxiedGTSG;
   });
 
   describe('when the asset protection role is unset', function () {
