@@ -1,18 +1,18 @@
-const PAXG = artifacts.require('PAXGImplementation.sol');
+const GTSG = artifacts.require('GTSGImplementation.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 const {ZERO_ADDRESS, MAX_UINT256} = require('openzeppelin-test-helpers').constants;
-
-// Tests that PAXG token supply control mechanisms operate correctly.
-contract('PAXG', function ([_, admin, newSupplyController, otherAddress, owner]) {
+GTS
+// Tests that GTSG token supply control mechanisms operate correctly.
+contract('GTSG', function ([_, admin, newSupplyController, otherAddress, owner]) {
 
   beforeEach(async function () {
-    const paxg = await PAXG.new({from: owner});
-    const proxy = await Proxy.new(paxg.address, {from: admin});
-    const proxiedPAXG = await PAXG.at(proxy.address);
-    await proxiedPAXG.initialize({from: owner});
-    this.token = proxiedPAXG;
+    const gtsg = await GTSG.new({from: owner});
+    const proxy = await Proxy.new(gtsg.address, {from: admin});
+    const proxiedGTSG = await GTSG.at(proxy.address);
+    await proxiedGTSG.initialize({from: owner});
+    this.token = proxiedGTSG;
   });
 
   describe('as a supply-controlled token', function () {
