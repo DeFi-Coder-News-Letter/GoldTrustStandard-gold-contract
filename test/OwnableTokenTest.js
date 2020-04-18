@@ -1,19 +1,19 @@
-const PAXG = artifacts.require('PAXGImplementation.sol');
+const GTSG = artifacts.require('GTSGImplementation.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 
-// Test that PAXG operates correctly as an Ownable token.
-contract('Ownable PAXG', function ([_, admin, anotherAccount, anotherAccount2, owner]) {
+// Test that GTSG operates correctly as an Ownable token.
+contract('Ownable GTSG', function ([_, admin, anotherAccount, anotherAccount2, owner]) {
   beforeEach(async function () {
-    const paxg = await PAXG.new({from: owner});
-    const proxy = await Proxy.new(paxg.address, {from: admin});
-    const proxiedPAXG = await PAXG.at(proxy.address);
-    await proxiedPAXG.initialize({from: owner});
-    this.token = proxiedPAXG;
-    this.paxg = paxg;
+    const gtsg = await GTSG.new({from: owner});
+    const proxy = await Proxy.new(gtsg.address, {from: admin});
+    const proxiedGTSG = await GTSG.at(proxy.address);
+    await proxiedGTSG.initialize({from: owner});
+    this.token = proxiedGTSG;
+    this.gtsg = gtsg;
   });
 
   describe('as an ownable', function () {
@@ -133,11 +133,11 @@ contract('Ownable PAXG', function ([_, admin, anotherAccount, anotherAccount2, o
     });
 
     it('constructor initializes the implementation contract and pauses it to avoid misleading state there', async function () {
-      const isPaused = await this.paxg.paused();
+      const isPaused = await this.gtsg.paused();
       assert.strictEqual(isPaused, true);
-      const currentOwner = this.paxg.owner();
+      const currentOwner = this.gtsg.owner();
       assert.notStrictEqual(currentOwner, ZERO_ADDRESS);
-      await assertRevert(this.paxg.initialize());
+      await assertRevert(this.gtsg.initialize());
     });
   });
 });
