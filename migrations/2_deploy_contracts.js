@@ -1,4 +1,4 @@
-const PAXG = artifacts.require('GTSGImplementation');
+const GTSG = artifacts.require('GTSGImplementation');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy');
 
 module.exports = async function(deployer) {
