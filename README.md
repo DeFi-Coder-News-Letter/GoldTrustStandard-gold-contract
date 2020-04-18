@@ -110,7 +110,7 @@ In order to allow for gas-less transactions we have implemented a variation of [
 The public function betaDelegatedTransfer and betaDelegatedTransferBatch allow an approved party to transfer GTSG
 on the end user's behalf given a signed message from said user. Because EIP-865 is not finalized,
 all methods related to delegated transfers are prefixed by Beta. Only approved parties are allowed to transfer
-PAXG on a user's behalf because of potential attacks associated with signing messages.
+GTSG on a user's behalf because of potential attacks associated with signing messages.
 To mitigate some attacks, [EIP-712](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md)
 is implemented which provides a structured message to be displayed for verification when signing.
 ```
@@ -129,7 +129,7 @@ implementation contract.
 The delegation uses `delegatecall`, which runs the code of the implementation contract
 _in the context of the proxy storage_. This way the implementation pointer can
 be changed to a different implementation contract while still keeping the same
-data and PAXG contract address, which are really for the proxy contract.
+data and GTSG contract address, which are really for the proxy contract.
 
 The proxy used here is AdminUpgradeabilityProxy from ZeppelinOS.
 
