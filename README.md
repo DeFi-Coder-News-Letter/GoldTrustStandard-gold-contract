@@ -100,7 +100,7 @@ The `assetProtectionRole` can freeze and unfreeze the GTSG balance of any addres
 It can also wipe the balance of an address after it is frozen
 to allow the appropriate authorities to seize the backing assets. 
 
-Freezing is something that Paxos will not do on its own accord,
+Freezing is something that GTS will not do on its own accord,
 and as such we expect to happen extremely rarely. The list of frozen addresses is available
 in `isFrozen(address who)`.
 
