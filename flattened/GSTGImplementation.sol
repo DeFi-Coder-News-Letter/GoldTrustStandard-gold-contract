@@ -69,7 +69,7 @@ pragma experimental "v0.5.0";
 /**
  * @title GSTGImplementation
  * @dev this contract is a Pausable ERC20 token with Burn and Mint
- * controlled by a central SupplyController. By implementing PaxosImplementation
+ * controlled by a central SupplyController. By implementing GTSosImplementation
  * this contract also includes external methods for setting
  * a new implementation contract for the Proxy.
  * NOTE: The storage defined here will actually be held in the Proxy
