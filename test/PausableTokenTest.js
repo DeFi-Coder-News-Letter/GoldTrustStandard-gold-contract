@@ -1,17 +1,17 @@
-const PAXGMock = artifacts.require('PAXGWithBalance.sol');
+const GTSGMock = artifacts.require('GTSGWithBalance.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 
-// Test that PAXG operates correctly as a Pausable token.
-contract('Pausable PAXG', function ([_, admin, anotherAccount, owner]) {
+// Test that GTSG operates correctly as a Pausable token.
+contract('Pausable GTSG', function ([_, admin, anotherAccount, owner]) {
   beforeEach(async function () {
-    const paxg = await PAXGMock.new({from: owner});
-    const proxy = await Proxy.new(paxg.address, {from: admin});
-    const proxiedPAXG = await PAXGMock.at(proxy.address);
-    await proxiedPAXG.initialize({from: owner});
-    await proxiedPAXG.initializeBalance(owner, 100);
-    this.token = proxiedPAXG;
+    const gtsg = await GTSGMock.new({from: owner});
+    const proxy = await Proxy.new(gtsg.address, {from: admin});
+    const proxiedGTSG = await GTSGMock.at(proxy.address);
+    await proxiedGTSG.initialize({from: owner});
+    await proxiedGTSG.initializeBalance(owner, 100);
+    this.token = proxiedGTSG;
   });
 
   const amount = 10;
