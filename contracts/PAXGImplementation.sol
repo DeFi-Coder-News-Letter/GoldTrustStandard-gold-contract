@@ -6,7 +6,7 @@ import "./zeppelin/SafeMath.sol";
 
 
 /**
- * @title PAXGImplementation
+ * @title GTSGImplementation
  * @dev this contract is a Pausable ERC20 token with Burn and Mint
  * controlled by a central SupplyController. By implementing PaxosImplementation
  * this contract also includes external methods for setting
@@ -17,7 +17,7 @@ import "./zeppelin/SafeMath.sol";
  * Any call to transfer against this contract should fail
  * with insufficient funds since no tokens will be issued there.
  */
-contract PAXGImplementation {
+contract GTSGImplementation {
 
     /**
      * MATH
@@ -362,11 +362,11 @@ contract PAXGImplementation {
     }
 
     /**
-     * @dev Reclaim all PAXG at the contract address.
-     * This sends the PAXG tokens that this contract add holding to the owner.
+     * @dev Reclaim all GTSG at the contract address.
+     * This sends the GTSG tokens that this contract add holding to the owner.
      * Note: this is not affected by freeze constraints.
      */
-    function reclaimPAXG() external onlyOwner {
+    function reclaimGTSG() external onlyOwner {
         uint256 _balance = balances[this];
         balances[this] = 0;
         balances[owner] = balances[owner].add(_balance);
