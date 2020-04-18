@@ -9,8 +9,8 @@ const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 contract('GTSG', function ([_, admin, assetProtectionRole, otherAddress, freezableAddress, owner]) {
 
   beforeEach(async function () {
-    const paxg = await GTSG.new({from: owner});
-    const proxy = await Proxy.new(paxg.address, {from: admin});
+    const gtsg = await GTSG.new({from: owner});
+    const proxy = await Proxy.new(gtsg.address, {from: admin});
     const proxiedGTSG = await GTSG.at(proxy.address);
     await proxiedGTSG.initialize({from: owner});
     this.token = proxiedGTSG;
