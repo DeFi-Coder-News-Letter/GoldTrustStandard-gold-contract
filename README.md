@@ -63,10 +63,10 @@ The total supply of GTSG is backed by gold held in professional vaults in <Final
 
 There is a single `supplyController` address that can mint and burn the token
 based on the actual movement of gold in and out of the reserve based on
-requests for the purchase, conversion and redemption of PAXG.
+requests for the purchase, conversion and redemption of GTSG.
 
 The supply control interface includes methods to get the current address
-of the supply controller, and events to monitor the change in supply of PAXG.
+of the supply controller, and events to monitor the change in supply of GTSG.
 
 - `supplyController()`
 
