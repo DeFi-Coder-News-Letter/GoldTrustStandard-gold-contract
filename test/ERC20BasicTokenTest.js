@@ -1,27 +1,27 @@
-const PAXGMock = artifacts.require('PAXGWithBalance.sol');
+const GTSGMock = artifacts.require('GTSGWithBalance.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 
-// Test that PAXG operates correctly as an ERC20Basic token.
-contract('ERC20Basic PAXG', function ([_, admin, recipient, anotherAccount, owner]) {
+// Test that GTSG operates correctly as an ERC20Basic token.
+contract('ERC20Basic GTSG', function ([_, admin, recipient, anotherAccount, owner]) {
   const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 
   beforeEach(async function () {
-    const paxg = await PAXGMock.new({from: owner});
+    const paxg = await GTSGMock.new({from: owner});
     const proxy = await Proxy.new(paxg.address, {from: admin});
-    const proxiedPAXG = await PAXGMock.at(proxy.address);
-    await proxiedPAXG.initialize({from: owner});
-    await proxiedPAXG.initializeBalance(owner, 100);
-    this.token = proxiedPAXG;
+    const proxiedGTSG = await GTSGMock.at(proxy.address);
+    await proxiedGTSG.initialize({from: owner});
+    await proxiedGTSG.initializeBalance(owner, 100);
+    this.token = proxiedGTSG;
   });
 
   describe('basic data', function () {
     it('has getters for the name, symbol, and decimals', async function () {
       const name = await this.token.name();
-      assert.equal(name, "Paxos Gold");
+      assert.equal(name, "Gold Trust Standard Gold");
       const symbol = await this.token.symbol();
-      assert.equal(symbol, "PAXG");
+      assert.equal(symbol, "GTSG");
       const decimals = await this.token.decimals();
       assert.equal(decimals, 18);
     });
