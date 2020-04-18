@@ -1,31 +1,34 @@
 const ethSigUtil = require('eth-sig-util');
 const {ZERO_ADDRESS} = require('openzeppelin-test-helpers').constants;
 
-const PAXGMock = artifacts.require('PAXGWithBalance.sol');
+const GTSGMock = artifacts.require('GTSGWithBalance.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 
 // private key for token from address
-const privateKey = new Buffer("43f2ee33c522046e80b67e96ceb84a05b60b9434b0ee2e3ae4b1311b9f5dcc46", 'hex');
+// const privateKey = new Buffer("43f2ee33c522046e80b67e96ceb84a05b60b9434b0ee2e3ae4b1311b9f5dcc46", 'hex');
+const privateKey = new Buffer("<PrivateKey>", 'hex');
 // EIP-55 of ethereumjsUtil.bufferToHex(ethereumjsUtil.privateToAddress(privateKey));
-const fromAddress = '0xBd2e9CaF03B81e96eE27AD354c579E1310415F39';
-const wrongPrivateKey = new Buffer("43f2ee33c522046e80b67e96ceb84a05b60b9434b0ee2e3ae4b1311b9f5dcc41", 'hex');
+// const fromAddress = '0xBd2e9CaF03B81e96eE27AD354c579E1310415F39';
+const fromAddress = '<FromAddressForPrivateKey>';
+// const wrongPrivateKey = new Buffer("43f2ee33c522046e80b67e96ceb84a05b60b9434b0ee2e3ae4b1311b9f5dcc41", 'hex');
+const wrongPrivateKey = new Buffer("<PrivateKeyWrongForTest>", 'hex');
 
-// Test that PAXG operates correctly as a token with BetaDelegatedTransfer.
-contract('BetaDelegatedTransfer PAXG', function ([_, admin, owner, executor, recipient, whitelister, bystander]) {
+// Test that GTSG operates correctly as a token with BetaDelegatedTransfer.
+contract('BetaDelegatedTransfer GTSG', function ([_, admin, owner, executor, recipient, whitelister, bystander]) {
 
   const amount = 10;
   const serviceFeeAmount = 1;
 
   beforeEach(async function () {
-    const paxg = await PAXGMock.new({from: owner});
+    const paxg = await GTSGMock.new({from: owner});
     const proxy = await Proxy.new(paxg.address, {from: admin});
-    const proxiedPAXG = await PAXGMock.at(proxy.address);
-    await proxiedPAXG.initialize({from: owner});
-    await proxiedPAXG.initializeDomainSeparator({from: owner});
-    await proxiedPAXG.initializeBalance(owner, 100);
-    this.token = proxiedPAXG;
+    const proxiedGTSG = await GTSGMock.at(proxy.address);
+    await proxiedGTSG.initialize({from: owner});
+    await proxiedGTSG.initializeDomainSeparator({from: owner});
+    await proxiedGTSG.initializeBalance(owner, 100);
+    this.token = proxiedGTSG;
   });
 
   describe('as a token with delegated transfer', function () {
