@@ -78,8 +78,8 @@ Supply Control Events
 
 ### Pausing the contract
 
-In the event of a critical security threat, Paxos has the ability to pause transfers
-and approvals of the PAXG token. The ability to pause is controlled by a single `owner` role,
+In the event of a critical security threat, Gold Standard Trust has the ability to pause transfers
+and approvals of the GTSG token. The ability to pause is controlled by a single `owner` role,
  following OpenZeppelin's
 [Ownable](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/5daaf60d11ee2075260d0f3adfb22b1c536db983/contracts/ownership/Ownable.sol). 
 The simple model for pausing transfers following OpenZeppelin's
