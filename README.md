@@ -96,7 +96,7 @@ Gold Trust Standard will never change the fee rate without prior notice as we ta
 
 As required by our regulators, we have introduced a role for asset protection to freeze or seize the assets of a criminal party when required to do so by law, including by court order or other legal process.
 
-The `assetProtectionRole` can freeze and unfreeze the PAXG balance of any address on chain.
+The `assetProtectionRole` can freeze and unfreeze the GTSG balance of any address on chain.
 It can also wipe the balance of an address after it is frozen
 to allow the appropriate authorities to seize the backing assets. 
 
@@ -107,7 +107,7 @@ in `isFrozen(address who)`.
 ### BetaDelegateTransfer
 
 In order to allow for gas-less transactions we have implemented a variation of [EIP-865](https://github.com/ethereum/EIPs/issues/865).
-The public function betaDelegatedTransfer and betaDelegatedTransferBatch allow an approved party to transfer PAXG
+The public function betaDelegatedTransfer and betaDelegatedTransferBatch allow an approved party to transfer GTSG
 on the end user's behalf given a signed message from said user. Because EIP-865 is not finalized,
 all methods related to delegated transfers are prefixed by Beta. Only approved parties are allowed to transfer
 PAXG on a user's behalf because of potential attacks associated with signing messages.
