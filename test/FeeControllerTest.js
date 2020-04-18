@@ -9,8 +9,8 @@ contract('Fee Controller GTSG', function ([_, admin, feeController, feeRecipient
     const ownerStartingBalance = 100000000000000;
 
     beforeEach(async function () {
-        const paxg = await GTSGMock.new({from: owner});
-        const proxy = await Proxy.new(paxg.address, {from: admin});
+        const gtsg = await GTSGMock.new({from: owner});
+        const proxy = await Proxy.new(gtsg.address, {from: admin});
         const proxiedGTSG = await GTSGMock.at(proxy.address);
         await proxiedGTSG.initialize({from: owner});
         // initialize with 1,000,000
