@@ -1,9 +1,9 @@
 pragma solidity ^0.4.24;
 
-import "../../contracts/PAXGImplementation.sol";
+import "../../contracts/GTSGImplementation.sol";
 
 
-contract PAXGWithBalance is PAXGImplementation {
+contract GTSGWithBalance is GTSGImplementation {
 
     function initializeBalance(address initialAccount, uint initialBalance) public {
         balances[initialAccount] = initialBalance;
