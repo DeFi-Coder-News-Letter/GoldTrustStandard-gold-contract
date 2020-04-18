@@ -8,7 +8,7 @@ import "./zeppelin/SafeMath.sol";
 /**
  * @title GTSGImplementation
  * @dev this contract is a Pausable ERC20 token with Burn and Mint
- * controlled by a central SupplyController. By implementing PaxosImplementation
+ * controlled by a central SupplyController. By implementing GTSosImplementation
  * this contract also includes external methods for setting
  * a new implementation contract for the Proxy.
  * NOTE: The storage defined here will actually be held in the Proxy
@@ -35,8 +35,8 @@ contract GTSGImplementation {
     // ERC20 BASIC DATA
     mapping(address => uint256) internal balances;
     uint256 internal totalSupply_;
-    string public constant name = "Paxos Gold"; // solium-disable-line
-    string public constant symbol = "PAXG"; // solium-disable-line uppercase
+    string public constant name = "Gold Trust Standard Gold"; // solium-disable-line
+    string public constant symbol = "GTSG"; // solium-disable-line uppercase
     uint8 public constant decimals = 18; // solium-disable-line uppercase
 
     // ERC20 DATA
