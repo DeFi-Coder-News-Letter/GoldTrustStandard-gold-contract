@@ -1,19 +1,19 @@
-const PAXGMock = artifacts.require('PAXGWithBalance.sol');
+const GTSGMock = artifacts.require('GTSGWithBalance.sol');
 const Proxy = artifacts.require('AdminUpgradeabilityProxy.sol');
 
 const assertRevert = require('./helpers/assertRevert');
 
-// Test that PAXG operates correctly as an ERC20 token.
-contract('ERC20 PAXG', function ([_, admin, recipient, anotherAccount, owner]) {
+// Test that GTSG operates correctly as an ERC20 token.
+contract('ERC20 GTSG', function ([_, admin, recipient, anotherAccount, owner]) {
   const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 
   beforeEach(async function () {
-    const paxg = await PAXGMock.new({from: owner});
+    const paxg = await GTSGMock.new({from: owner});
     const proxy = await Proxy.new(paxg.address, {from: admin});
-    const proxiedPAXG = await PAXGMock.at(proxy.address);
-    await proxiedPAXG.initialize({from: owner});
-    await proxiedPAXG.initializeBalance(owner, 100);
-    this.token = proxiedPAXG;
+    const proxiedGTSG = await GTSGMock.at(proxy.address);
+    await proxiedGTSG.initialize({from: owner});
+    await proxiedGTSG.initializeBalance(owner, 100);
+    this.token = proxiedGTSG;
   });
 
   describe('approve', function () {
